@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import GoalInput from "./components/CourseGoals/GoalInput";
+import GoalList from "./components/CourseGoals/GoalList";
 
 function App() {
+  const [goals, setGoals] = useState([
+    { goalName: "Pray Constantly💕!", id: "g1" },
+  ]);
+
+  const addGoal = (goalVal) => {
+    setGoals((prevGoal) => {
+      const updatedGoals = [...prevGoal];
+      updatedGoals.unshift({
+        goalName: goalVal,
+        id: Math.random().toString(),
+      });
+      return updatedGoals;
+    });
+  };
+
+  const onDeleteGoal = (goalId) => {
+    setGoals((prevGoal) => {
+      const updatedGoals = prevGoal.filter((goal) => goal.id !== goalId);
+      return updatedGoals;
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GoalInput onAddGoal={addGoal} />
+      <GoalList goals={goals} onDelete={onDeleteGoal} />
     </div>
   );
 }

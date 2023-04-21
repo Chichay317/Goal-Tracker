@@ -1,0 +1,33 @@
+.forminput {
+  padding: 20px;
+}
+
+.forminput label {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  display: block;
+}
+
+.forminput input {
+  outline: none;
+  border: 1px solid #ccc;
+  width: 60%;
+  padding: 6px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+}
+
+.forminput input:focus {
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.formcontrol.invalid input {
+  border-color: red;
+  background: rgb(226, 183, 183);
+}
+
+.formcontrol.invalid label {
+  color: red;
+}
